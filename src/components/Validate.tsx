@@ -1,16 +1,15 @@
 import React, { ReactEventHandler, useState } from 'react';
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
-
-const App = () => {
+const Validate = () => {
   const [validated, set_Validated] = useState(false);
   const [form_Data, set_Form_Data] = useState({
-    user: "",
-    pass: "",
-    confimPass: "",
-    email: "",
-    phoneNo: "",
+    user: '',
+    pass: '',
+    confimPass: '',
+    email: '',
+    phoneNo: '',
   });
   const submitFn = (event: any) => {
     const form = event.currentTarget;
@@ -20,7 +19,7 @@ const App = () => {
     }
     set_Validated(true);
   };
-  const chngFn = (event:any) => {
+  const chngFn = (event: any) => {
     const { name, value } = event.target;
     set_Form_Data({
       ...form_Data,
@@ -38,7 +37,7 @@ const App = () => {
         >
           <h1
             style={{
-              color: "green",
+              color: 'green',
             }}
           >
             GeeksforGeeks
@@ -54,14 +53,10 @@ const App = () => {
                 onChange={chngFn}
                 pattern="^[a-zA-Z0-9]+$"
                 required
-                isInvalid={
-                  validated &&
-                  !/^[a-zA-Z0-9]+$/.test(form_Data.user)
-                }
+                isInvalid={validated && !/^[a-zA-Z0-9]+$/.test(form_Data.user)}
               />
               <Form.Control.Feedback type="invalid">
-                Please enter a valid username (alphanumeric
-                characters only).
+                Please enter a valid username (alphanumeric characters only).
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="password">
@@ -73,9 +68,7 @@ const App = () => {
                 onChange={chngFn}
                 minLength={6}
                 required
-                isInvalid={
-                  validated && form_Data.pass.length < 6
-                }
+                isInvalid={validated && form_Data.pass.length < 6}
               />
               <Form.Control.Feedback type="invalid">
                 Password must be at least 6 characters long.
@@ -91,14 +84,9 @@ const App = () => {
                 minLength={6}
                 required
                 pattern={form_Data.pass}
-                isInvalid={
-                  validated &&
-                  form_Data.confimPass !== form_Data.pass
-                }
+                isInvalid={validated && form_Data.confimPass !== form_Data.pass}
               />
-              <Form.Control.Feedback type="invalid">
-                Passwords do not match.
-              </Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">Passwords do not match.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="email">
               <Form.Label>Email</Form.Label>
@@ -108,10 +96,7 @@ const App = () => {
                 value={form_Data.email}
                 onChange={chngFn}
                 required
-                isInvalid={
-                  validated &&
-                  !/^\S+@\S+\.\S+$/.test(form_Data.email)
-                }
+                isInvalid={validated && !/^\S+@\S+\.\S+$/.test(form_Data.email)}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter a valid email address.
@@ -126,10 +111,7 @@ const App = () => {
                 onChange={chngFn}
                 pattern="^\d{10}$"
                 required
-                isInvalid={
-                  validated &&
-                  !/^\d{10}$/.test(form_Data.phoneNo)
-                }
+                isInvalid={validated && !/^\d{10}$/.test(form_Data.phoneNo)}
               />
               <Form.Control.Feedback type="invalid">
                 Please enter a valid 10-digit phone number.
@@ -142,4 +124,4 @@ const App = () => {
     </Container>
   );
 };
-export default App;
+export default Validate;

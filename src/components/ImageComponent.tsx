@@ -1,6 +1,11 @@
 import React from 'react';
 
-const ImageComponent = (images: any, text: string) => {
+interface IImageComponent  {
+  images: any;
+  text: string;
+}
+
+const ImageComponent: React.FC<IImageComponent> = ({ images, text }) => {
   return (
     <>
       <img src={images} alt={text} />
