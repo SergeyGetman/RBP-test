@@ -27,16 +27,7 @@ export const sliceAccountPages = createSlice({
       state.globalArrayAccount.push(action.payload);
     },
     findSearch(state, action) {
-      if (!action.payload) {
-        state.searchResults = [];
-        return state;
-      }
 
-      const findUsers = state.originalGlobalArrayAccount.filter((objelem: any) =>
-        objelem.brand.toLowerCase().startsWith(action.payload.toLowerCase()),
-      );
-
-      state.searchResults = findUsers;
       return state;
     },
   },

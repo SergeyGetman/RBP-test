@@ -1,31 +1,46 @@
-const path = require('path');
+import path from 'path';
+import { Configuration } from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
-module.exports = {
-  // Точка входа
+const config: Configuration = {
   entry: path.resolve(__dirname, 'src', 'index.tsx'),
-
-  // Точка выхода
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-
-  // Расширения файлов, которые будет искать Webpack
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
-
-  // Модули и правила
   module: {
     rules: [
       {
-        test: /\.tsx?$/, // Регулярное выражение для поиска .ts и .tsx файлов
-        use: 'ts-loader', // Использование ts-loader для компиляции TypeScript
-        exclude: /node_modules/, // Исключение папки node_modules
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [require.resolve('react-refresh/babel')],
+            },
+          },
+        ],
       },
     ],
   },
-
-  // Режим разработки для улучшенного отладки
+  plugins: [
+    new ReactRefreshWebpackPlugin(),
+  ],
+  devServer: {
+    hot: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    watchContentBase: true,
+  },
   mode: 'development',
 };
+
+export default config;

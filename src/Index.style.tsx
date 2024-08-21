@@ -1,7 +1,7 @@
 import { Box, styled, Typography } from '@mui/material';
 import { CustomStepperEnum } from './enam';
 
-export const HeaderAppStyle = styled(Typography)(({ step }: { step: CustomStepperEnum }) => ({
+export const HeaderAppStyle = styled(Typography)(({ step }: { step?: CustomStepperEnum }) => ({
   margin: '0',
   padding: '0',
   background: !step
