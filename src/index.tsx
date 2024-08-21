@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './App';
 import ModalWindow from './components/modal/ModalWindow';
 import { CustomEnumPath } from './enam';
-import MainInfo from './components/MainInfo';
+import MainInfoPage from './components/MainInfo';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -15,7 +15,7 @@ root.render(
       <Routes>
         <Route path={CustomEnumPath.home} element={<App />} />
         <Route path={CustomEnumPath.modalWindow} element={<ModalWindow />} />
-        <Route path={CustomEnumPath.pageRgb} element={<MainInfo />} />
+        <Route path={CustomEnumPath.pageRgb} element={<MainInfoPage />} />
       </Routes>
     </Router>
     ,

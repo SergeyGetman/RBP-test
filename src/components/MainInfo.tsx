@@ -1,7 +1,13 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const MainInfo = () => {
+import   "../styles/globalstyle.css";
+
+import { ReactComponent as SelectArrowDown } from "../images/vector_logo/1505369583_sublime-text 1.svg"
+import Validation from './Validate';
+import ImageComponent from './ImageComponent';
+
+const MainInfoPage = () => {
   return (
     <Container fluid>
       {/* Header Section */}
@@ -9,6 +15,7 @@ const MainInfo = () => {
         <Row className="align-items-center justify-content-center">
           <Col md={8} sm={12}>
             <h1>Your Header Content</h1>
+            <Validation />
           </Col>
         </Row>
       </header>
@@ -23,6 +30,10 @@ const MainInfo = () => {
             </section>
           </Col>
         </Row>
+        <div className="titleAutor">
+            <p> TEXT CONTENT </p>
+          <ImageComponent />
+        </div>
       </main>
 
       {/* Additional Content Section */}
@@ -61,4 +72,4 @@ const MainInfo = () => {
   );
 };
 
-export default MainInfo;
+export default MainInfoPage;
