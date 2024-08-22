@@ -7,9 +7,22 @@ import { ButtonElement } from '../components/button/ButtonElement';
 import iconDate from '../images/icons/calendar_icon.svg';
 import iconTime from '../images/icons/gg_time.svg';
 import iconCircle from '../images/icons/circle.svg';
-import iconBlade from '../images/icons/bnt_logo.svg';
-import { FormBox, FormBoxText, FormTextFrontend, TextStyledComponent } from '../Index.style';
+import iconGift from '../images/gift_logo.png';
+import iconHuman from '../images/man_logo.png';
+import {
+  FormBox,
+  FormBoxImagesGiftLogo,
+  FormBoxImagesHumanLogo,
+  FormBoxImagesHumanSubTitle,
+  FormBoxImagesHumanTitle,
+  FormBoxImagesLogo,
+  FormBoxText,
+  FormTextFrontend,
+  TextStyledComponent,
+  TextStyledComponentFooter,
+} from '../Index.style';
 import Validate from '../components/Validate';
+import ImageComponent from './ImageComponent';
 
 const MainInfoPage = () => {
   const customStyleForBTNRotate = {
@@ -94,6 +107,33 @@ const MainInfoPage = () => {
                     <br /> карьеру в востребованной профессии
                   </p>
                 </FormBoxText>
+                <FormBoxImagesLogo>
+                  <FormBoxImagesHumanLogo>
+                    <ImageComponent images={iconHuman} text="gift" width="37.8px" height="37.8px" />
+                    <FormBoxImagesHumanTitle>
+                      Кирилл <span> КАСАТОНОВ </span>
+                      <FormBoxImagesHumanSubTitle>
+                        6 лет коммерческого опыта с такими компаниями как <br /> Mercedes-Benz и другими
+                        крупными корпорациями
+                      </FormBoxImagesHumanSubTitle>
+                    </FormBoxImagesHumanTitle>
+                  </FormBoxImagesHumanLogo>
+
+                  <FormBoxImagesHumanLogo>
+                    <ImageComponent
+                      images={iconGift}
+                      text="Бонус за регистрацию"
+                      width="37.8px"
+                      height="37.8px"
+                    />
+                    <FormBoxImagesHumanTitle>
+                      Бонус за регистрацию
+                      <FormBoxImagesHumanSubTitle>
+                        PDF-файл "5 преимуществ <br /> профессии фронтенд разработчика"
+                      </FormBoxImagesHumanSubTitle>
+                    </FormBoxImagesHumanTitle>
+                  </FormBoxImagesHumanLogo>
+                </FormBoxImagesLogo>
               </Col>
               <Col
                 xs={12}
@@ -107,13 +147,7 @@ const MainInfoPage = () => {
             </Row>
           </Container>
 
-          <footer>
-            <Row className="justify-content-center">
-              <Col md={8} sm={12} className="text-center">
-                <p>&copy; 2024 Your Company. All rights reserved.</p>
-              </Col>
-            </Row>
-          </footer>
+          <TextStyledComponentFooter>front-end developer</TextStyledComponentFooter>
         </Container>
       </Box>
     </>

@@ -10,11 +10,13 @@ export const ButtonElement: FC<IButtonProps> = ({
   icon,
   showIcon = false,
   bgColor,
+  type,
   customStyle,
 }) => {
   return (
     <>
       <Button
+        type={type}
         className={`d-flex align-items-center justify-content-center ${className} ${bgColor} `}
         variant={variant}
         style={{ backgroundColor: bgColor, borderColor: bgColor, ...customStyle }}

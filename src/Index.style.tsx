@@ -59,3 +59,122 @@ export const FormBoxText = styled(Box)(() => ({
   height: '81px',
   padding: '15px',
 }));
+
+export const FormBoxImagesLogo = styled(Box)(() => ({
+  marginTop: '59px',
+  padding: '10px',
+}));
+export const FormBoxImagesHumanLogo = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'start',
+  alignItems: 'center',
+  gridGap: '20px',
+}));
+
+export const FormBoxImagesHumanTitle = styled(Box)(() => ({
+  color: '#FFFFFF',
+  fontSize: '14px',
+  fontWeight: 700,
+  fontFamily: 'Gilroy',
+  lineHeight: '16.8px',
+  marginTop: '20px',
+}));
+
+export const FormBoxImagesHumanSubTitle = styled(Box)(() => ({
+  color: '#FFFFFF',
+  fontSize: '12px',
+  fontWeight: 400,
+  fontFamily: 'Gilroy',
+  lineHeight: '19.2px',
+}));
+
+export const FormBoxImagesGiftLogo = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'start',
+  alignItems: 'center',
+}));
+export const TextStyledComponentFooter = styled(Typography)(() => ({
+  display: 'inline-flex',
+  fontFamily: 'Gilroy, sans-serif',
+  fontWeight: 800,
+  maxWidth: '100%',
+  fontSize: '115px',
+  letterSpacing: '-1px',
+  lineHeight: '152.5px',
+  color: '#242731',
+  textShadow: '0 0 2px #fff',
+  textTransform: 'uppercase',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+}));
+
+export const BoxForm = styled(Box)(() => ({
+  width: '366px',
+  height: '474px',
+  borderRadius: '10px',
+
+  backgroundColor: '#303A53',
+}));
+
+export const BoxFormContent = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '20px',
+  height: '374px',
+
+  '& input': {
+    width: '248px',
+    height: '51px',
+    margin: '14px',
+    backgroundColor: '#272D3D',
+    border: 'none',
+
+    '&::placeholder': {
+      color: '#D7D7D7',
+      fontSize: '13px',
+      fontWeight: 400,
+      fontFamily: 'Gilroy, sans-serif',
+      lineHeight: '19.2px',
+    },
+    '& button': {
+      margin: '0 auto',
+      display: 'flex',
+      justifyContent: 'center',
+      height: '200px',
+    },
+  },
+}));
+
+export const BoxFormContentTitle = styled(Typography)(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+  fontFamily: 'Gilroy, sans-serif',
+  color: '#FFFFFF',
+  fontSize: '22px',
+  fontWeight: 700,
+  lineHeight: '25.99px',
+  whiteSpace: 'nowrap',
+}));
+
+export const BoxFormContentTitleRef = styled(Typography)(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+  fontFamily: 'Gilroy, sans-serif',
+  color: '#FF3459',
+  fontSize: '22px',
+  fontWeight: 700,
+  lineHeight: '25.99px',
+  whiteSpace: 'nowrap',
+}));
+
+export const BoxFormContentSubTitle = styled(Typography)(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+  fontFamily: 'Gilroy, sans-serif',
+  color: '#FFFFFF',
+  fontSize: '22px',
+  fontWeight: 700,
+  lineHeight: '25.99px',
+  whiteSpace: 'nowrap',
+}));

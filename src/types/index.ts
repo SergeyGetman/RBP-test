@@ -36,9 +36,12 @@ export type IVariant =
   | 'dark'
   | 'link';
 
+export type IBtnType = 'submit' | 'reset' | 'button' | undefined;
+
 export interface IButtonProps {
   text: string;
   bgColor?: string;
+  type?: IBtnType;
   variant?: IVariant;
   className?: string;
   icon?: any;
