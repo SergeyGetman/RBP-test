@@ -34,3 +34,28 @@ export const FormTextFrontend = styled(Typography)(() => ({
   textTransform: 'uppercase',
   whiteSpace: 'nowrap',
 }));
+
+export const TextStyledComponent = styled(Typography)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  fontFamily: 'Gilroy, sans-serif',
+  fontWeight: 600,
+  padding: '15px',
+  height: '27px',
+  fontSize: '22px',
+  lineHeight: '26.25px',
+  color: '#FFFFFF',
+
+  whiteSpace: 'nowrap',
+}));
+
+export const FormBox = styled(Box)(() => ({
+  display: 'flex',
+  padding: '5px',
+}));
+
+export const FormBoxText = styled(Box)(() => ({
+  display: 'flex',
+  height: '81px',
+  padding: '15px',
+}));

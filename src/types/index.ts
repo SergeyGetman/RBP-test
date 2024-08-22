@@ -1,5 +1,5 @@
 import { CustomStepperEnum } from '../enam';
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export interface IDataTable {
   arr?: any[];
@@ -44,6 +44,7 @@ export interface IButtonProps {
   icon?: any;
   showIcon?: boolean;
   handleClick?: () => void;
+  customStyle?: CSSProperties;
 }
 export interface IMainContain {
   children?: ReactNode;

@@ -10,16 +10,17 @@ export const ButtonElement: FC<IButtonProps> = ({
   icon,
   showIcon = false,
   bgColor,
+  customStyle,
 }) => {
   return (
     <>
       <Button
         className={`d-flex align-items-center justify-content-center ${className} ${bgColor} `}
         variant={variant}
-        style={{ backgroundColor: bgColor, borderColor: bgColor }}
+        style={{ backgroundColor: bgColor, borderColor: bgColor, ...customStyle }}
         onClick={handleClick}
       >
-        {showIcon && <img src={icon} alt={text} className="me-2" />}
+        {showIcon && <img src={icon} height="20px" width="20px" alt={text} className="me-2" />}
         {text}
       </Button>
     </>
