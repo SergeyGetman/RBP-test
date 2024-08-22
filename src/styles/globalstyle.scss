@@ -9,7 +9,15 @@
   height: 820px;
   width: 1440px;
   background-color: #242731;
-  //background: rgb(51,47,101);
-  //background: linear-gradient(90deg, rgba(51,47,101,1) 4%, rgba(36,39,49,1) 19%, rgba(38,40,55,1) 82%, rgba(51,47,101,1) 96%);
+  background: rgb(57,72,125);
+  background: linear-gradient(90deg, rgba(57,72,125,1) 10%, rgba(36,39,49,1) 50%, rgba(57,72,125,1) 90%),
+  radial-gradient(circle at top left, rgba(255,255,255,0.2), rgba(0,0,0,0) 70%),
+  radial-gradient(circle at top right, rgba(255,255,255,0.2), rgba(0,0,0,0) 70%);
+
+  &-head-list {
+    height: 200px;
+    background-color: yellow;
+  }
+
 
 }

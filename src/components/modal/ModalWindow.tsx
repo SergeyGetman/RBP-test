@@ -25,11 +25,11 @@ export const ModalWindow = () => {
     <>
       <HeaderAppStyle step={stepper}>
         <WindowForButtonStyle>
-          <ButtonElement text={CustomTextEnum.openModal} handleClick={handleOpen} variant="contained" />
+          <ButtonElement text={CustomTextEnum.openModal} handleClick={handleOpen} variant="secondary" />
           <ButtonElement
             text={CustomButtonTextEnum.titlePrev}
             handleClick={handleChangeStepMinus}
-            variant="contained"
+            variant="primary"
           />
         </WindowForButtonStyle>
         <Modal

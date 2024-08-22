@@ -6,15 +6,12 @@ import AdditionalInfo from './components/AdditionalInfo';
 import { CustomButtonTextEnum } from './enam';
 import { ButtonElement } from './components/button/ButtonElement';
 
-
 export const App = () => {
-
-
   return (
     <>
-      <HeaderAppStyle  >
+      <HeaderAppStyle>
         <AdditionalInfo />
-        <ButtonElement text={CustomButtonTextEnum.titleNext} variant="contained" />
+        <ButtonElement text={CustomButtonTextEnum.titleNext} variant="secondary" />
       </HeaderAppStyle>
     </>
   );

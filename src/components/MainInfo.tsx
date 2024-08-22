@@ -1,10 +1,14 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/globalstyle.css';
-import CSSLogo from '../images/vector_logo/1452px-CSS3_logo_and_wordmark.svg';
+import CSSLogo from '../images/logo.svg';
 import Validation from './Validate';
 import ImageComponent from './ImageComponent';
 import { Box, Typography } from '@mui/material';
+import { ButtonElement } from '../components/button/ButtonElement';
+import iconDate from '../images/icons/calendar_icon.svg';
+import iconTime from '../images/icons/gg_time.svg';
+import { FormTextFrontend } from '../Index.style';
 
 const MainInfoPage = () => {
   const objGeneralCss = {
@@ -16,56 +20,53 @@ const MainInfoPage = () => {
   return (
     <>
       <Box>
-        <Box>
-          <Typography style={objGeneralCss}>Layout</Typography>
-        </Box>
         <Container fluid className="generalContainer">
-          <header>
-            <Row className="align-items-center justify-content-center">
-              <Col md={8} sm={12}>
-                <h1>Your Header Content</h1>
-                <Validation />
+          <Container fluid className="mt-5">
+            <Row className="align-items-center justify-content-between">
+              <Col xs={12} sm={6} md={4} lg={6} className="text-center text-sm-start">
+                <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
-            </Row>
-          </header>
+              <Col xs={12} sm={6} md={4} className="d-flex justify-content-center justify-content-sm-end">
+                <ButtonElement
+                  icon={iconDate}
+                  showIcon={true}
+                  text="28 декабря"
+                  className="m-1 text-white"
+                  bgColor="#302E5A"
+                  handleClick={() => {}}
+                />
 
-          <main>
-            <Row>
-              <Col md={8} sm={12} className="mx-auto">
-                <section className="main-content">
-                  <h2>Main Content Area</h2>
-                  <p>This is where your main content goes.</p>
-                </section>
+                <ButtonElement
+                  icon={iconTime}
+                  showIcon={true}
+                  bgColor="#302E5A"
+                  text="3.5 часа"
+                  className="m-1 text-white"
+                  handleClick={() => {}}
+                />
               </Col>
             </Row>
-            <div className="titleAutor">
-              <p> TEXT CONTENT </p>
-              <ImageComponent images={CSSLogo} text="css-logo" />
-            </div>
-          </main>
-
-          <section className="additional-content">
-            <Row>
-              <Col md={4} sm={12}>
-                <div className="content-box">
-                  <h3>Additional Content 1</h3>
-                  <p>Some additional information.</p>
-                </div>
-              </Col>
-              <Col md={4} sm={12}>
-                <div className="content-box">
-                  <h3>Additional Content 2</h3>
-                  <p>More additional information.</p>
-                </div>
-              </Col>
-              <Col md={4} sm={12}>
-                <div className="content-box">
-                  <h3>Additional Content 3</h3>
-                  <p>Even more additional information.</p>
-                </div>
-              </Col>
-            </Row>
-          </section>
+          </Container>
+          <Row className="justify-content-center">
+            <Col
+              xs={12}
+              md={6}
+              lg={4}
+              className="d-flex justify-content-center align-items-center mb-3 mb-md-0"
+            >
+              <ButtonElement text="Hi there" />
+              <FormTextFrontend>front-end</FormTextFrontend>
+            </Col>
+            <Col
+              xs={12}
+              md={4}
+              lg={4}
+              className="d-flex justify-content-center align-items-center"
+              style={{ marginLeft: '70px' }}
+            >
+              <Validation />
+            </Col>
+          </Row>
 
           <footer>
             <Row className="justify-content-center">

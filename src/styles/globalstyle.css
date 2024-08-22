@@ -7,6 +7,12 @@
   height: 820px;
   width: 1440px;
   background-color: #242731;
+  background: rgb(57, 72, 125);
+  background: linear-gradient(90deg, rgb(57, 72, 125) 10%, rgb(36, 39, 49) 50%, rgb(57, 72, 125) 90%), radial-gradient(circle at top left, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0) 70%), radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0) 70%);
+}
+.generalContainer-head-list {
+  height: 200px;
+  background-color: yellow;
 }
 
 /*# sourceMappingURL=globalstyle.css.map */

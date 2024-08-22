@@ -27,22 +27,9 @@ const Validate = () => {
     });
   };
   return (
-    <Container className="mt-5">
+    <Container fluid className="mt-5">
       <Row>
-        <Col
-          md={{
-            span: 6,
-            offset: 3,
-          }}
-        >
-          <h1
-            style={{
-              color: 'green',
-            }}
-          >
-            GeeksforGeeks
-          </h1>
-          <h3>React Bootstrap Form Validation</h3>
+        <Col>
           <Form noValidate validated={validated} onSubmit={submitFn}>
             <Form.Group controlId="username">
               <Form.Label>Username</Form.Label>

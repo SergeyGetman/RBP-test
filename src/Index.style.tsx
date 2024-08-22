@@ -22,3 +22,15 @@ export const FormStyle = styled(Box)(() => ({
   marginTop: '10px',
   color: '#fff',
 }));
+
+export const FormTextFrontend = styled(Typography)(() => ({
+  fontFamily: 'Gilroy, sans-serif',
+  fontWeight: 800,
+  width: '309px',
+  height: '64px',
+  fontSize: '53px',
+  lineHeight: '66.25px',
+  color: '#FF3459',
+  textTransform: 'uppercase',
+  whiteSpace: 'nowrap',
+}));
