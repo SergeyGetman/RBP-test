@@ -7,9 +7,10 @@ import {
   BoxFormContentSubTitle,
   BoxFormContentTitle,
   BoxFormContentTitleRef,
+  FormBoxTextConfirm,
 } from '../Index.style';
-import { Box } from '@mui/material';
 import { ButtonElement } from '../components/button/ButtonElement';
+import useAnotherDevises from '../hooks/useAnotherDevises';
 
 const Validate = () => {
   const customStyleForBTNR = {
@@ -21,6 +22,8 @@ const Validate = () => {
     lineHeight: '24px',
     margin: '0 auto',
   };
+
+  const { isTablet, isMobile } = useAnotherDevises();
 
   const [validated, set_Validated] = useState(false);
   const [form_Data, set_Form_Data] = useState({
@@ -104,11 +107,14 @@ const Validate = () => {
                   </Form.Group>
 
                   <ButtonElement
-                    text="Записаться бесплатно"
+                    text="Записаться  бесплатно"
                     customStyle={customStyleForBTNR}
-                    bgColor="#FF3459"
+                    bgColor={isMobile || isTablet ? '#0048FF' : '#FF3459'}
                     type="submit"
                   />
+                  <FormBoxTextConfirm>
+                    Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
+                  </FormBoxTextConfirm>
                 </Form>
               </BoxFormContent>
             </Col>

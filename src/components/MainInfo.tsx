@@ -23,6 +23,8 @@ import {
 } from '../Index.style';
 import Validate from '../components/Validate';
 import ImageComponent from './ImageComponent';
+import BlockHumanGiftMob from '../components/BlockHumanGiftMob';
+import BlockHumanGift from '../components/BlockHumanGift';
 
 const MainInfoPage = () => {
   const theme = useTheme();
@@ -53,7 +55,7 @@ const MainInfoPage = () => {
 
   return (
     <>
-      <Box style={{ minHeight: '820px' }}>
+      <Box style={{ minHeight: '920px' }}>
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
             <Row className="align-items-center justify-content-between" style={{ marginTop: '20px' }}>
@@ -114,33 +116,7 @@ const MainInfoPage = () => {
                     <br /> карьеру в востребованной профессии
                   </p>
                 </FormBoxText>
-                <FormBoxImagesLogo>
-                  <FormBoxImagesHumanLogo>
-                    <ImageComponent images={iconHuman} text="gift" width="37.8px" height="37.8px" />
-                    <FormBoxImagesHumanTitle>
-                      Кирилл <span> КАСАТОНОВ </span>
-                      <FormBoxImagesHumanSubTitle>
-                        6 лет коммерческого опыта с такими компаниями как <br /> Mercedes-Benz и другими
-                        крупными корпорациями
-                      </FormBoxImagesHumanSubTitle>
-                    </FormBoxImagesHumanTitle>
-                  </FormBoxImagesHumanLogo>
-
-                  <FormBoxImagesHumanLogo>
-                    <ImageComponent
-                      images={iconGift}
-                      text="Бонус за регистрацию"
-                      width="37.8px"
-                      height="37.8px"
-                    />
-                    <FormBoxImagesHumanTitle>
-                      Бонус за регистрацию
-                      <FormBoxImagesHumanSubTitle>
-                        PDF-файл "5 преимуществ <br /> профессии фронтенд разработчика"
-                      </FormBoxImagesHumanSubTitle>
-                    </FormBoxImagesHumanTitle>
-                  </FormBoxImagesHumanLogo>
-                </FormBoxImagesLogo>
+                {isMobile || isTablet ? <BlockHumanGiftMob /> : <BlockHumanGift />}
               </Col>
               <Col xs={12} md={4} lg={4} className="d-flex justify-content-center ">
                 <Validate />

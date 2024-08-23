@@ -3,7 +3,7 @@ import { Modal } from '@mui/material';
 import { ButtonElement } from '../button/ButtonElement';
 import { WindowForButtonStyle, WindowModalStyle } from './ModalWindow.style';
 import { useNavigate } from 'react-router-dom';
-import Forms from '../Forms';
+
 import { CustomButtonTextEnum, CustomTextEnum } from '../../enam';
 import { HeaderAppStyle } from '../../Index.style';
 import { useSelector } from 'react-redux';
@@ -38,9 +38,7 @@ export const ModalWindow = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <WindowModalStyle width="100px">
-            <Forms />
-          </WindowModalStyle>
+          <WindowModalStyle width="100px"></WindowModalStyle>
         </Modal>
       </HeaderAppStyle>
     </>

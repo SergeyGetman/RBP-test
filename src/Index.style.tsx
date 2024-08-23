@@ -29,7 +29,7 @@ export const FormStyle = styled(Box)(() => ({
 }));
 
 export const FormTextFrontend = styled(Typography)(() => ({
-  fontFamily: 'Gilroy, sans-serif',
+  fontFamily: 'gilroyextrabold, sans-serif',
   fontWeight: 800,
   width: '309px',
   height: '64px',
@@ -50,7 +50,7 @@ export const TextStyledComponent = styled(Typography)<ITextStyledComponentFooter
   ({ isMobile, isTablet }) => ({
     display: 'flex',
     alignItems: 'center',
-    fontFamily: 'Gilroy, sans-serif',
+    fontFamily: 'gilroyextrabold, sans-serif',
     fontWeight: 600,
     padding: '15px',
     height: '27px',
@@ -69,7 +69,7 @@ export const FormBox = styled(Box)(() => ({
 
 export const FormBoxText = styled(Typography)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
   display: 'flex',
-  height: '81px',
+  height: '101px',
   padding: '15px',
 
   '& p': {
@@ -81,10 +81,41 @@ export const FormBoxText = styled(Typography)<ITextStyledComponentFooterProps>((
   },
 }));
 
-export const FormBoxImagesLogo = styled(Box)(() => ({
-  marginTop: '59px',
+export const FormBoxTextConfirm = styled(Typography)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    color: '#958989',
+    fontSize: '12px',
+    fontWeight: 700,
+    fontFamily: 'gilroyextraboldextrabold',
+    lineHeight: '16.8px',
+    textAlign: 'center',
+    marginTop: '20px',
+    '& span': {
+      textDecoration: 'underline',
+      color: '#958989',
+    },
+    '& span:hover': {
+      cursor: 'pointer',
+      color: '#fefcfc',
+    },
+  }),
+);
+
+export const FormBoxImagesLogo = styled(Box)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
+  marginTop: isMobile || isTablet ? '5px' : '58px',
   padding: '10px',
 }));
+
+export const FormBoxImagesLogoForMob = styled(Box)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    marginTop: isMobile || isTablet ? '5px' : '58px',
+    padding: '10px',
+    position: 'fixed',
+    bottom: '0',
+    zIndex: '2',
+  }),
+);
+
 export const FormBoxImagesHumanLogo = styled(Box)(() => ({
   display: 'flex',
   justifyContent: 'start',
@@ -96,7 +127,7 @@ export const FormBoxImagesHumanTitle = styled(Box)(() => ({
   color: '#FFFFFF',
   fontSize: '14px',
   fontWeight: 700,
-  fontFamily: 'Gilroy',
+  fontFamily: 'gilroyextrabold',
   lineHeight: '16.8px',
   marginTop: '20px',
 }));
@@ -105,7 +136,7 @@ export const FormBoxImagesHumanSubTitle = styled(Box)(() => ({
   color: '#FFFFFF',
   fontSize: '12px',
   fontWeight: 400,
-  fontFamily: 'Gilroy',
+  fontFamily: 'gilroyextrabold',
   lineHeight: '19.2px',
 }));
 
@@ -118,16 +149,19 @@ export const FormBoxImagesGiftLogo = styled(Box)(() => ({
 export const TextStyledComponentFooter = styled(Typography)<ITextStyledComponentFooterProps>(
   ({ isMobile, isTablet }) => ({
     display: isMobile || isTablet ? 'none' : 'flex',
-    margin: '0 auto',
-    position: 'fixed',
+    opacity: '.5',
+
+    position: 'absolute',
+    left: '10%',
+    right: '0',
     bottom: '0',
-    fontFamily: 'Gilroy, sans-serif',
+    fontFamily: 'gilroyextrabold, sans-serif',
     fontWeight: 800,
     maxWidth: '100%',
     marginLeft: '30px',
-    fontSize: '135px',
+    fontSize: '130px',
     letterSpacing: '-1px',
-    lineHeight: '172.5px',
+    lineHeight: '162.5px',
     color: '#242731',
     textShadow: '0 0 2px #fff',
     textTransform: 'uppercase',
@@ -162,7 +196,7 @@ export const BoxFormContent = styled(Box)(() => ({
       color: '#D7D7D7',
       fontSize: '13px',
       fontWeight: 400,
-      fontFamily: 'Gilroy, sans-serif',
+      fontFamily: 'gilroyextrabold, sans-serif',
       lineHeight: '19.2px',
     },
     '& button': {
@@ -177,7 +211,7 @@ export const BoxFormContent = styled(Box)(() => ({
 export const BoxFormContentTitle = styled(Typography)(() => ({
   display: 'flex',
   justifyContent: 'center',
-  fontFamily: 'Gilroy, sans-serif',
+  fontFamily: 'gilroyextrabold, sans-serif',
   color: '#FFFFFF',
   fontSize: '22px',
   fontWeight: 700,
@@ -188,7 +222,7 @@ export const BoxFormContentTitle = styled(Typography)(() => ({
 export const BoxFormContentTitleRef = styled(Typography)(() => ({
   display: 'flex',
   justifyContent: 'center',
-  fontFamily: 'Gilroy, sans-serif',
+  fontFamily: 'gilroyextrabold, sans-serif',
   color: '#FF3459',
   fontSize: '22px',
   fontWeight: 700,
@@ -199,7 +233,7 @@ export const BoxFormContentTitleRef = styled(Typography)(() => ({
 export const BoxFormContentSubTitle = styled(Typography)(() => ({
   display: 'flex',
   justifyContent: 'center',
-  fontFamily: 'Gilroy, sans-serif',
+  fontFamily: 'gilroyextrabold, sans-serif',
   color: '#FFFFFF',
   fontSize: '22px',
   fontWeight: 700,

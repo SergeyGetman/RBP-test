@@ -4,15 +4,18 @@ import {
   FormBoxImagesHumanSubTitle,
   FormBoxImagesHumanTitle,
   FormBoxImagesLogo,
+  FormBoxImagesLogoForMob,
 } from '../Index.style';
 import ImageComponent from '../components/ImageComponent';
 import iconHuman from '../images/man_logo.png';
 import iconGift from '../images/gift_logo.png';
+import UseAnotherDevises from '../hooks/useAnotherDevises';
 
-const BlockHumanGift = () => {
+const BlockHumanGiftMob = () => {
+  const { isMobile, isTablet } = UseAnotherDevises();
   return (
     <>
-      <FormBoxImagesLogo>
+      <FormBoxImagesLogoForMob>
         <FormBoxImagesHumanLogo>
           <ImageComponent images={iconHuman} text="gift" width="37.8px" height="37.8px" />
           <FormBoxImagesHumanTitle>
@@ -33,9 +36,9 @@ const BlockHumanGift = () => {
             </FormBoxImagesHumanSubTitle>
           </FormBoxImagesHumanTitle>
         </FormBoxImagesHumanLogo>
-      </FormBoxImagesLogo>
+      </FormBoxImagesLogoForMob>
     </>
   );
 };
 
-export default BlockHumanGift;
+export default BlockHumanGiftMob;
