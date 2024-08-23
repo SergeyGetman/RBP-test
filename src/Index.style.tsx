@@ -1,6 +1,11 @@
 import { Box, styled, Typography } from '@mui/material';
 import { CustomStepperEnum } from './enam';
 
+interface ITextStyledComponentFooterProps {
+  isMobile?: boolean;
+  isTablet?: boolean;
+}
+
 export const HeaderAppStyle = styled(Typography)(({ step }: { step?: CustomStepperEnum }) => ({
   margin: '0',
   padding: '0',
@@ -35,29 +40,45 @@ export const FormTextFrontend = styled(Typography)(() => ({
   whiteSpace: 'nowrap',
 }));
 
-export const TextStyledComponent = styled(Typography)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  fontFamily: 'Gilroy, sans-serif',
-  fontWeight: 600,
-  padding: '15px',
-  height: '27px',
-  fontSize: '22px',
-  lineHeight: '26.25px',
-  color: '#FFFFFF',
+export const TextStyledComponentFooter2 = styled(Typography)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    display: 'flex',
+  }),
+);
 
-  whiteSpace: 'nowrap',
-}));
+export const TextStyledComponent = styled(Typography)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    fontFamily: 'Gilroy, sans-serif',
+    fontWeight: 600,
+    padding: '15px',
+    height: '27px',
+    fontSize: isMobile || isTablet ? '15px' : '22px',
+    lineHeight: '26.25px',
+    color: '#FFFFFF',
+
+    whiteSpace: 'nowrap',
+  }),
+);
 
 export const FormBox = styled(Box)(() => ({
   display: 'flex',
   padding: '5px',
 }));
 
-export const FormBoxText = styled(Box)(() => ({
+export const FormBoxText = styled(Typography)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
   display: 'flex',
   height: '81px',
   padding: '15px',
+
+  '& p': {
+    fontSize: isMobile || isTablet ? '14px' : '18px',
+  },
+  '& strong': {
+    fontSize: isMobile || isTablet ? '14px' : '18px',
+    fontWeight: isMobile || isTablet ? 700 : 800,
+  },
 }));
 
 export const FormBoxImagesLogo = styled(Box)(() => ({
@@ -93,21 +114,24 @@ export const FormBoxImagesGiftLogo = styled(Box)(() => ({
   justifyContent: 'start',
   alignItems: 'center',
 }));
-export const TextStyledComponentFooter = styled(Typography)(() => ({
-  display: 'inline-flex',
-  fontFamily: 'Gilroy, sans-serif',
-  fontWeight: 800,
-  maxWidth: '100%',
-  fontSize: '115px',
-  letterSpacing: '-1px',
-  lineHeight: '152.5px',
-  color: '#242731',
-  textShadow: '0 0 2px #fff',
-  textTransform: 'uppercase',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-}));
+
+export const TextStyledComponentFooter = styled(Typography)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    display: isMobile || isTablet ? 'none' : 'inline-flex',
+    fontFamily: 'Gilroy, sans-serif',
+    fontWeight: 800,
+    maxWidth: '100%',
+    fontSize: '115px',
+    letterSpacing: '-1px',
+    lineHeight: '152.5px',
+    color: '#242731',
+    textShadow: '0 0 2px #fff',
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  }),
+);
 
 export const BoxForm = styled(Box)(() => ({
   width: '366px',

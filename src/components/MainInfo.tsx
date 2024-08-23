@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/globalstyle.css';
 import CSSLogo from '../images/logo.svg';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ButtonElement } from '../components/button/ButtonElement';
 import iconDate from '../images/icons/calendar_icon.svg';
 import iconTime from '../images/icons/gg_time.svg';
@@ -25,9 +25,13 @@ import Validate from '../components/Validate';
 import ImageComponent from './ImageComponent';
 
 const MainInfoPage = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   const customStyleForBTNRotate = {
     rotate: '-3.51deg',
-    fontSize: '23px',
+    fontSize: isTablet || isMobile ? '16px' : '23px',
     fontWeight: '800',
     fontFamily: 'Gilroy',
     lineHeight: '28.75px',
@@ -38,6 +42,7 @@ const MainInfoPage = () => {
     fontWeight: '600',
     fontFamily: 'Gilroy',
     lineHeight: '24px',
+    margin: isMobile || isTablet ? '0 auto' : 'auto auto',
   };
   const customStyleForBTNClockDate = {
     fontSize: '14px',
@@ -52,10 +57,10 @@ const MainInfoPage = () => {
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
             <Row className="align-items-center justify-content-between" style={{ marginTop: '20px' }}>
-              <Col xs={12} sm={6} md={4} lg={6} className="text-center text-sm-start">
+              <Col xs={12} sm={4} md={4} lg={6} className="text-center text-sm-left">
                 <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
-              <Col xs={12} sm={6} md={4} className="d-flex justify-content-center justify-content-sm-end">
+              <Col xs={12} sm={4} md={4} className="d-flex justify-content-center justify-content-sm-end">
                 <ButtonElement
                   icon={iconDate}
                   showIcon={true}
@@ -79,7 +84,7 @@ const MainInfoPage = () => {
             </Row>
           </Container>
 
-          <Container fluid style={{ marginTop: '116px' }}>
+          <Container fluid style={{ marginTop: isMobile || isTablet ? '56px' : '116px' }}>
             <Row className="justify-content-center">
               <Col xs={12} md={6} lg={4} className="d-flex flex-column mb-3 mb-md-0">
                 <ButtonElement
@@ -97,10 +102,12 @@ const MainInfoPage = () => {
                     bgColor="#FF3459"
                     customStyle={customStyleForBTNRotate}
                   />
-                  <TextStyledComponent>легкий старт в IT профессии</TextStyledComponent>
+                  <TextStyledComponent isMobile={isMobile} isTablet={isTablet}>
+                    легкий старт в IT профессии
+                  </TextStyledComponent>
                 </FormBox>
 
-                <FormBoxText>
+                <FormBoxText isTablet={isTablet} isMobile={isMobile}>
                   <p>
                     Узнайте какими <strong>навыками должен обладать </strong> <br /> фронтенд разработчик в
                     2022 году и как начать
@@ -135,19 +142,15 @@ const MainInfoPage = () => {
                   </FormBoxImagesHumanLogo>
                 </FormBoxImagesLogo>
               </Col>
-              <Col
-                xs={12}
-                md={4}
-                lg={4}
-                className="d-flex justify-content-center "
-                style={{ marginLeft: '70px' }}
-              >
+              <Col xs={12} md={4} lg={4} className="d-flex justify-content-center ">
                 <Validate />
               </Col>
             </Row>
           </Container>
 
-          <TextStyledComponentFooter>front-end developer</TextStyledComponentFooter>
+          <TextStyledComponentFooter isMobile={isMobile} isTablet={isTablet}>
+            front-end developer
+          </TextStyledComponentFooter>
         </Container>
       </Box>
     </>
