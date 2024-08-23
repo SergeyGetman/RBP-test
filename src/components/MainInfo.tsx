@@ -53,11 +53,11 @@ const MainInfoPage = () => {
 
   return (
     <>
-      <Box>
+      <Box style={{ minHeight: '820px' }}>
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
             <Row className="align-items-center justify-content-between" style={{ marginTop: '20px' }}>
-              <Col xs={12} sm={4} md={4} lg={6} className="text-center text-sm-left">
+              <Col xs={12} sm={4} md={4} lg={6} className="text-center text-sm-left ">
                 <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
               <Col xs={12} sm={4} md={4} className="d-flex justify-content-center justify-content-sm-end">

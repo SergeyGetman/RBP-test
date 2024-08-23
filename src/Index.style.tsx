@@ -117,13 +117,17 @@ export const FormBoxImagesGiftLogo = styled(Box)(() => ({
 
 export const TextStyledComponentFooter = styled(Typography)<ITextStyledComponentFooterProps>(
   ({ isMobile, isTablet }) => ({
-    display: isMobile || isTablet ? 'none' : 'inline-flex',
+    display: isMobile || isTablet ? 'none' : 'flex',
+    margin: '0 auto',
+    position: 'fixed',
+    bottom: '0',
     fontFamily: 'Gilroy, sans-serif',
     fontWeight: 800,
     maxWidth: '100%',
-    fontSize: '115px',
+    marginLeft: '30px',
+    fontSize: '135px',
     letterSpacing: '-1px',
-    lineHeight: '152.5px',
+    lineHeight: '172.5px',
     color: '#242731',
     textShadow: '0 0 2px #fff',
     textTransform: 'uppercase',
