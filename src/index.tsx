@@ -13,9 +13,8 @@ root.render(
   <Provider store={store}>
     <Router>
       <Routes>
-        <Route path={CustomEnumPath.home} element={<App />} />
+        <Route path={CustomEnumPath.home} element={<MainInfoPage />} />
         <Route path={CustomEnumPath.modalWindow} element={<ModalWindow />} />
-        <Route path={CustomEnumPath.pageRgb} element={<MainInfoPage />} />
       </Routes>
     </Router>
     ,

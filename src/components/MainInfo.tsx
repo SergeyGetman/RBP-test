@@ -11,11 +11,6 @@ import iconGift from '../images/gift_logo.png';
 import iconHuman from '../images/man_logo.png';
 import {
   FormBox,
-  FormBoxImagesGiftLogo,
-  FormBoxImagesHumanLogo,
-  FormBoxImagesHumanSubTitle,
-  FormBoxImagesHumanTitle,
-  FormBoxImagesLogo,
   FormBoxText,
   FormTextFrontend,
   TextStyledComponent,
@@ -25,6 +20,7 @@ import Validate from '../components/Validate';
 import ImageComponent from './ImageComponent';
 import BlockHumanGiftMob from '../components/BlockHumanGiftMob';
 import BlockHumanGift from '../components/BlockHumanGift';
+import BlockIconsHead from '../components/BlockIconsHead';
 
 const MainInfoPage = () => {
   const theme = useTheme();
@@ -58,11 +54,17 @@ const MainInfoPage = () => {
       <Box style={{ minHeight: '920px' }}>
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
-            <Row className="align-items-center justify-content-between" style={{ marginTop: '20px' }}>
-              <Col xs={12} sm={4} md={4} lg={6} className="text-center text-sm-left ">
+            <Row className="align-items-center " style={{ marginTop: '20px' }}>
+              <Col xs={12} sm={4} md={4} lg={3} className="text-center text-sm-left ">
                 <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
-              <Col xs={12} sm={4} md={4} className="d-flex justify-content-center justify-content-sm-end">
+              <Col
+                xs={12}
+                sm={4}
+                md={4}
+                className="d-flex justify-content-center justify-content-sm-end"
+                style={{ gridGap: '10px' }}
+              >
                 <ButtonElement
                   icon={iconDate}
                   showIcon={true}
@@ -88,7 +90,7 @@ const MainInfoPage = () => {
 
           <Container fluid style={{ marginTop: isMobile || isTablet ? '56px' : '116px' }}>
             <Row className="justify-content-center">
-              <Col xs={12} md={6} lg={4} className="d-flex flex-column mb-3 mb-md-0">
+              <Col xs={12} md={6} lg={3} className="d-flex flex-column mb-3 mb-md-0">
                 <ButtonElement
                   text="Вебинар"
                   className="align-self-start m-lg-0"
@@ -108,18 +110,22 @@ const MainInfoPage = () => {
                     легкий старт в IT профессии
                   </TextStyledComponent>
                 </FormBox>
-
                 <FormBoxText isTablet={isTablet} isMobile={isMobile}>
                   <p>
-                    Узнайте какими <strong>навыками должен обладать </strong> <br /> фронтенд разработчик в
+                    Узнайте, какими <strong>навыками должен обладать </strong> <br /> фронтенд разработчик в
                     2022 году и как начать
                     <br /> карьеру в востребованной профессии
                   </p>
                 </FormBoxText>
                 {isMobile || isTablet ? <BlockHumanGiftMob /> : <BlockHumanGift />}
               </Col>
-              <Col xs={12} md={4} lg={4} className="d-flex justify-content-center ">
+
+              <Col xs={12} md={4} lg={4} className="d-flex justify-content-center">
                 <Validate />
+              </Col>
+
+              <Col xs={12} md={12} lg={3} style={{ marginLeft: '-5rem' }}>
+                <BlockIconsHead />
               </Col>
             </Row>
           </Container>

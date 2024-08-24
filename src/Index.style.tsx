@@ -240,3 +240,39 @@ export const BoxFormContentSubTitle = styled(Typography)(() => ({
   lineHeight: '25.99px',
   whiteSpace: 'nowrap',
 }));
+
+export const FormBoxIconHead = styled(Box)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'nowrap',
+  backgroundColor: 'white',
+
+  height: '500px',
+  width: '200px ',
+}));
+
+export const FormBoxIconLeftSide = styled(Box)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
+  display: 'inline-flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  marginTop: '50px',
+
+  '& img:nth-child(1) ': {
+    padding: '10px',
+    margin: '10px',
+  },
+  '& img:nth-child(2) ': {
+    padding: '10px',
+  },
+}));
+
+export const FormBoxIconRightSide = styled(Box)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    display: 'inline-flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    '& img': {
+      marginTop: '40px',
+    },
+  }),
+);

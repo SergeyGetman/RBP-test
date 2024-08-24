@@ -5,12 +5,13 @@ interface IImageComponent {
   text: string;
   height?: string;
   width?: string;
+  className?: string;
 }
 
-const ImageComponent: React.FC<IImageComponent> = ({ images, text, height, width }) => {
+const ImageComponent: React.FC<IImageComponent> = ({ images, text, height, width, className }) => {
   return (
     <>
-      <img src={images} alt={text} height={height} width={width} />
+      <img src={images} alt={text} height={height} width={width} className={className} />
     </>
   );
 };
