@@ -276,3 +276,15 @@ export const FormBoxIconRightSide = styled(Box)<ITextStyledComponentFooterProps>
     },
   }),
 );
+
+export const FormBoxMap = styled(Box)<ITextStyledComponentFooterProps>(({ isMobile, isTablet }) => ({
+  width: '100%',
+  color: 'white',
+
+  '& button ': {
+    backgroundColor: 'transparent',
+    border: 'none',
+    width: '50px',
+    height: '50px',
+  },
+}));

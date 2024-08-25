@@ -7,10 +7,15 @@ import {
   BoxFormContentSubTitle,
   BoxFormContentTitle,
   BoxFormContentTitleRef,
+  FormBoxMap,
   FormBoxTextConfirm,
 } from '../Index.style';
 import { ButtonElement } from '../components/button/ButtonElement';
 import useAnotherDevises from '../hooks/useAnotherDevises';
+
+import flags from 'react-phone-number-input/flags';
+import { CountrySelector, ParsedCountry, PhoneInput } from 'react-international-phone';
+import { Box } from '@mui/material';
 
 const Validate = () => {
   const customStyleForBTNR = {
@@ -23,14 +28,28 @@ const Validate = () => {
     margin: '0 auto',
   };
 
-  const { isTablet, isMobile } = useAnotherDevises();
+  interface IPhone {
+    (phone: string, meta: { country: ParsedCountry; inputValue: string }): void;
+    setPhone: () => void;
+  }
+  interface IPhone {
+    phone: string;
+    meta?: {
+      country?: ParsedCountry;
+      inputValue?: string;
+    };
+  }
 
+  const { isTablet, isMobile } = useAnotherDevises();
+  const [country, setCountry] = useState();
+  const [phone, setPhone] = useState<string>('');
   const [validated, set_Validated] = useState(false);
   const [form_Data, set_Form_Data] = useState({
     user: '',
     email: '',
     phoneNo: '',
   });
+
   const submitFn = (event: any) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -76,18 +95,17 @@ const Validate = () => {
                   </Form.Group>
 
                   <Form.Group controlId="phoneNumber">
-                    <Form.Control
-                      placeholder="+38"
-                      type="number"
-                      name="phoneNo"
-                      value={form_Data.phoneNo}
-                      onChange={chngFn}
-                      pattern="^\d{10}$"
-                      required
-                      isInvalid={validated && !/^\d{10}$/.test(form_Data.phoneNo)}
-                    />
+                    <FormBoxMap>
+                      <PhoneInput
+                        defaultCountry="UA"
+                        value={phone}
+                        onChange={(phone) => setPhone(phone)}
+                        inputStyle={{ width: '100%' }}
+                      />
+                    </FormBoxMap>
+
                     <Form.Control.Feedback type="invalid">
-                      Please enter a valid 10-digit phone number.
+                      Please enter a valid phone number.
                     </Form.Control.Feedback>
                   </Form.Group>
 

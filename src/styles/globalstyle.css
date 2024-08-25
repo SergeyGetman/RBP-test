@@ -66,4 +66,9 @@ button {
   font-family: "gilroyextrabold";
 }
 
+.react-international-phone-input-container {
+  display: flex;
+  align-items: center;
+}
+
 /*# sourceMappingURL=globalstyle.css.map */
