@@ -123,10 +123,12 @@ const MainInfoPage = () => {
               <Col xs={12} md={4} lg={4} className="d-flex justify-content-center">
                 <Validate />
               </Col>
-
-              <Col xs={12} md={12} lg={3} style={{ marginLeft: '-5rem' }}>
-                <BlockIconsHead />
-              </Col>
+              {isMobile ||
+                (isTablet && (
+                  <Col xs={12} md={12} lg={3} style={{ marginLeft: '-5rem' }}>
+                    <BlockIconsHead />
+                  </Col>
+                ))}
             </Row>
           </Container>
 

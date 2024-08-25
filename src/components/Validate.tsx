@@ -17,6 +17,8 @@ import useAnotherDevises from '../hooks/useAnotherDevises';
 import flags from 'react-phone-number-input/flags';
 import { CountrySelector, ParsedCountry, PhoneInput } from 'react-international-phone';
 import { Box } from '@mui/material';
+import { DATA_ENV_API } from '../api';
+import Spiners from './Spiners';
 
 const Validate = () => {
   const customStyleForBTNR = {
@@ -41,6 +43,12 @@ const Validate = () => {
     };
   }
 
+  interface IFormData {
+    user: string;
+    email: string;
+    phoneNo: string;
+  }
+
   const phoneUtil = PhoneNumberUtil.getInstance();
 
   const isPhoneValid = (phone: string) => {
@@ -52,31 +60,54 @@ const Validate = () => {
   };
 
   const { isTablet, isMobile } = useAnotherDevises();
-  const [country, setCountry] = useState();
+  const [loading, setLoading] = useState<boolean>(false);
   const [phone, setPhone] = useState<string>('');
+  console.log('phone', phone);
   const isValid = isPhoneValid(phone);
   const [validated, set_Validated] = useState(false);
-  const [form_Data, set_Form_Data] = useState({
+  const [form_Data, set_Form_Data] = useState<IFormData>({
     user: '',
     email: '',
     phoneNo: '',
   });
 
-  const submitFn = (event: any) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    set_Validated(true);
-  };
+  const { TELEGRAM_CHAT_ID, APi } = DATA_ENV_API;
+
   const chngFn = (event: any) => {
+    console.log('EVENT', event);
     const { name, value } = event.target;
     set_Form_Data({
       ...form_Data,
       [name]: value,
+      phoneNo: phone,
     });
   };
+
+  async function sendDataOnTGChanges(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+    event.preventDefault();
+    setLoading(true);
+
+    const { user, email, phoneNo } = form_Data;
+    const text = `ЗАЯВКА ОТ ${user}: ТЕЛЕФОН: ${phoneNo} email: ${email}`;
+    try {
+      await fetch(APi, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': ' *',
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text,
+        }),
+      })
+        .then((response) => response.json())
+        .then((dat) => console.log('DATA', dat));
+    } catch (error) {
+      console.error('error', error);
+    }
+  }
+
   return (
     <>
       <BoxForm>
@@ -89,7 +120,7 @@ const Validate = () => {
               <BoxFormContentSubTitle>и получите подарок</BoxFormContentSubTitle>
 
               <BoxFormContent>
-                <Form noValidate validated={validated} onSubmit={submitFn}>
+                <Form noValidate validated={validated}>
                   <Form.Group controlId="username">
                     <Form.Control
                       placeholder="Ваша имя и фамилия"
@@ -97,9 +128,11 @@ const Validate = () => {
                       name="user"
                       value={form_Data.user}
                       onChange={chngFn}
-                      pattern="^[a-zA-Z0-9]+$"
+                      pattern="^[a-zA-ZА-Яа-яЁё]+(?:\s[a-zA-ZА-Яа-яЁё]+)+$"
                       required
-                      isInvalid={validated && !/^[a-zA-Z0-9]+$/.test(form_Data.user)}
+                      isInvalid={
+                        validated && !/^[a-zA-ZА-Яа-яЁё]+(?:\s[a-zA-ZА-Яа-яЁё]+)+$/.test(form_Data.user)
+                      }
                     />
                     <Form.Control.Feedback type="invalid">
                       Please enter a valid username (alphanumeric characters only).
@@ -139,12 +172,15 @@ const Validate = () => {
                   </Form.Group>
 
                   <ButtonElement
-                    disabled={!isValid}
+                    // disabled={!isValid}
                     text="Записаться  бесплатно"
                     customStyle={customStyleForBTNR}
                     bgColor={isMobile || isTablet ? '#0048FF' : '#FF3459'}
-                    type="submit"
+                    // type="submit"
+                    handleClick={(e) => sendDataOnTGChanges(e)}
                   />
+                  {loading && <Spiners />}
+
                   <FormBoxTextConfirm>
                     Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
                   </FormBoxTextConfirm>

@@ -1,5 +1,6 @@
 import { CustomStepperEnum } from '../enam';
 import { CSSProperties, ReactNode } from 'react';
+import { MouseEvent } from 'react';
 
 export interface IDataTable {
   arr?: any[];
@@ -46,7 +47,7 @@ export interface IButtonProps {
   className?: string;
   icon?: any;
   showIcon?: boolean;
-  handleClick?: () => void;
+  handleClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   customStyle?: CSSProperties;
   disabled?: boolean;
 }
