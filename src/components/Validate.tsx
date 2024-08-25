@@ -1,4 +1,5 @@
 import React, { ReactEventHandler, useState } from 'react';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
@@ -40,9 +41,20 @@ const Validate = () => {
     };
   }
 
+  const phoneUtil = PhoneNumberUtil.getInstance();
+
+  const isPhoneValid = (phone: string) => {
+    try {
+      return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+    } catch (error) {
+      return false;
+    }
+  };
+
   const { isTablet, isMobile } = useAnotherDevises();
   const [country, setCountry] = useState();
   const [phone, setPhone] = useState<string>('');
+  const isValid = isPhoneValid(phone);
   const [validated, set_Validated] = useState(false);
   const [form_Data, set_Form_Data] = useState({
     user: '',
@@ -104,9 +116,11 @@ const Validate = () => {
                       />
                     </FormBoxMap>
 
-                    <Form.Control.Feedback type="invalid">
-                      Please enter a valid phone number.
-                    </Form.Control.Feedback>
+                    {!isValid && (
+                      <Form.Control.Feedback type="invalid">
+                        Please enter a valid phone number.
+                      </Form.Control.Feedback>
+                    )}
                   </Form.Group>
 
                   <Form.Group controlId="email">

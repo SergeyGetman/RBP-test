@@ -76,3 +76,23 @@
               display: flex;
             align-items: center;
           }
+
+          .react-international-phone-country-selector-dropdown {
+            background-color: grey;
+            opacity: .5;
+            box-shadow: var(--react-international-phone-dropdown-shadow, 2px 2px 16px rgba(0, 0, 0, .25));
+            color: var(--react-international-phone-dropdown-item-text-color, var(--react-international-phone-text-color, #222));
+            display: flex;
+            flex-direction: column;
+            left: var(--react-international-phone-dropdown-left, 0);
+            list-style: none;
+            margin: 110px 100px;
+            max-height: 200px;
+            overflow-y: scroll;
+            padding: 4px 0;
+            position: absolute;
+            top: var(--react-international-phone-dropdown-top, 44px);
+            width: 200px;
+            height: 150px;
+            z-index: 1;
+          }

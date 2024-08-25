@@ -287,4 +287,7 @@ export const FormBoxMap = styled(Box)<ITextStyledComponentFooterProps>(({ isMobi
     width: '50px',
     height: '50px',
   },
+  '& li ': {
+    wordWrap: 'break-word',
+  },
 }));
