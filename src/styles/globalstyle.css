@@ -72,8 +72,8 @@ button {
 }
 
 .react-international-phone-country-selector-dropdown {
-  background-color: grey;
-  opacity: 0.5;
+  background-color: #f8f8f8;
+  opacity: 0.8;
   box-shadow: var(--react-international-phone-dropdown-shadow, 2px 2px 16px rgba(0, 0, 0, 0.25));
   color: var(--react-international-phone-dropdown-item-text-color, var(--react-international-phone-text-color, #222));
   display: flex;
@@ -86,9 +86,15 @@ button {
   padding: 4px 0;
   position: absolute;
   top: var(--react-international-phone-dropdown-top, 44px);
-  width: 200px;
+  width: 250px;
   height: 150px;
   z-index: 1;
+}
+
+.form-control:focus {
+  color: #4d5e5e !important;
+  font-weight: 300;
+  font-family: "gilroyextrabold";
 }
 
 /*# sourceMappingURL=globalstyle.css.map */

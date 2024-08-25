@@ -139,6 +139,7 @@ const Validate = () => {
                   </Form.Group>
 
                   <ButtonElement
+                    disabled={!isValid}
                     text="Записаться  бесплатно"
                     customStyle={customStyleForBTNR}
                     bgColor={isMobile || isTablet ? '#0048FF' : '#FF3459'}

@@ -48,6 +48,7 @@ export interface IButtonProps {
   showIcon?: boolean;
   handleClick?: () => void;
   customStyle?: CSSProperties;
+  disabled?: boolean;
 }
 export interface IMainContain {
   children?: ReactNode;

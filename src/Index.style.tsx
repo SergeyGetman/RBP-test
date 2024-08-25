@@ -191,6 +191,10 @@ export const BoxFormContent = styled(Box)(() => ({
     margin: '14px',
     backgroundColor: '#272D3D',
     border: 'none',
+    color: '#4d5e5e',
+    fontSize: '13px',
+    fontWeight: 400,
+    fontFamily: 'gilroyextrabold, sans-serif',
 
     '&::placeholder': {
       color: '#D7D7D7',
@@ -287,6 +291,24 @@ export const FormBoxMap = styled(Box)<ITextStyledComponentFooterProps>(({ isMobi
     width: '50px',
     height: '50px',
   },
+  '& input ': {
+    border: 'none',
+    color: '#4d5e5e',
+    fontSize: '13px',
+    fontWeight: 400,
+    fontFamily: 'gilroyextrabold, sans-serif',
+  },
+  '& input:focus ': {
+    border: 'none',
+    backgroundColor: '#f9f8f9',
+    color: '#4d5e5e',
+  },
+
+  '& ul img ': {
+    height: '50px',
+    width: '100px',
+  },
+
   '& li ': {
     wordWrap: 'break-word',
   },

@@ -12,10 +12,12 @@ export const ButtonElement: FC<IButtonProps> = ({
   bgColor,
   type,
   customStyle,
+  disabled,
 }) => {
   return (
     <>
       <Button
+        disabled={disabled}
         type={type}
         className={`d-flex align-items-center justify-content-center ${className} ${bgColor} `}
         variant={variant}
