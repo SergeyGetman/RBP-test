@@ -1,6 +1,6 @@
-import React, { ReactEventHandler, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { PhoneNumberUtil } from 'google-libphonenumber';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import {
   BoxForm,
@@ -13,14 +13,15 @@ import {
 } from '../Index.style';
 import { ButtonElement } from '../components/button/ButtonElement';
 import useAnotherDevises from '../hooks/useAnotherDevises';
-
-import flags from 'react-phone-number-input/flags';
-import { CountrySelector, ParsedCountry, PhoneInput } from 'react-international-phone';
-import { Box } from '@mui/material';
+import { ParsedCountry, PhoneInput } from 'react-international-phone';
+import { Box, Modal, Typography } from '@mui/material';
 import { DATA_ENV_API } from '../api';
 import Spiners from './Spiners';
+import { WindowModalStyle } from './modal/ModalWindow.style';
 
 const Validate = () => {
+  const [stateModal, setStateModal] = useState<boolean>(false);
+
   const customStyleForBTNR = {
     width: '248px',
     height: '51px',
@@ -62,7 +63,6 @@ const Validate = () => {
   const { isTablet, isMobile } = useAnotherDevises();
   const [loading, setLoading] = useState<boolean>(false);
   const [phone, setPhone] = useState<string>('');
-  console.log('phone', phone);
   const isValid = isPhoneValid(phone);
   const [validated, set_Validated] = useState(false);
   const [form_Data, set_Form_Data] = useState<IFormData>({
@@ -74,7 +74,6 @@ const Validate = () => {
   const { TELEGRAM_CHAT_ID, APi } = DATA_ENV_API;
 
   const chngFn = (event: any) => {
-    console.log('EVENT', event);
     const { name, value } = event.target;
     set_Form_Data({
       ...form_Data,
@@ -83,8 +82,37 @@ const Validate = () => {
     });
   };
 
+  const showAnswer = useCallback(
+    (state: boolean, text?: string) => {
+      return (
+        <>
+          <Modal
+            open={state}
+            onClose={() => {}}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <WindowModalStyle width="100px">
+              <Typography
+                style={{
+                  backgroundColor: stateModal ? 'green' : 'darkred',
+                  fontSize: '25px',
+                  textAlign: 'center',
+                }}
+              >
+                {text}
+              </Typography>
+            </WindowModalStyle>
+          </Modal>
+        </>
+      );
+    },
+    [stateModal],
+  );
+
   async function sendDataOnTGChanges(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     event.preventDefault();
+
     setLoading(true);
 
     const { user, email, phoneNo } = form_Data;
@@ -102,7 +130,13 @@ const Validate = () => {
         }),
       })
         .then((response) => response.json())
-        .then((dat) => console.log('DATA', dat));
+        .then((dat) => {
+          console.log('THIS IS DATA', dat);
+          if (dat.ok) {
+            setStateModal(true);
+            showAnswer(stateModal);
+          }
+        });
     } catch (error) {
       console.error('error', error);
     }
@@ -172,15 +206,16 @@ const Validate = () => {
                   </Form.Group>
 
                   <ButtonElement
-                    // disabled={!isValid}
+                    disabled={!isValid}
                     text="Записаться  бесплатно"
                     customStyle={customStyleForBTNR}
                     bgColor={isMobile || isTablet ? '#0048FF' : '#FF3459'}
-                    // type="submit"
                     handleClick={(e) => sendDataOnTGChanges(e)}
                   />
-                  {loading && <Spiners />}
-
+                  <Box className="d-flex justify-content-center align-items-center mt-2">
+                    {loading && <Spiners />}
+                  </Box>
+                  {stateModal && showAnswer(stateModal, 'ДАННЫЕ УСПЕШНО ОТПРАВЛЕНЫ')}
                   <FormBoxTextConfirm>
                     Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
                   </FormBoxTextConfirm>

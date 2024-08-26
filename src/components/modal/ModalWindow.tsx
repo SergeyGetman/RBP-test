@@ -9,7 +9,7 @@ import { HeaderAppStyle } from '../../Index.style';
 import { useSelector } from 'react-redux';
 import { AccountPagesState } from '../../types';
 
-export const ModalWindow = () => {
+export const ModalWindow = (text: any) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,7 +38,7 @@ export const ModalWindow = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <WindowModalStyle width="100px"></WindowModalStyle>
+          <WindowModalStyle width="100px">{text}</WindowModalStyle>
         </Modal>
       </HeaderAppStyle>
     </>

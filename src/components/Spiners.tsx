@@ -4,8 +4,8 @@ import Spinner from 'react-bootstrap/Spinner';
 const Spiners = () => {
   return (
     <>
-      <Spinner animation="grow" size="sm" />
-      <Spinner animation="grow" />
+      <Spinner animation="grow" size="sm" variant="light" />
+      <Spinner animation="grow" variant="light" />
     </>
   );
 };
