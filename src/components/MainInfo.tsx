@@ -69,7 +69,11 @@ const MainInfoPage = () => {
             </Row>
           </Container>
 
-          <Container fluid style={{ marginTop: isMobile || isTablet ? '56px' : '116px' }}>
+          <Container
+            fluid
+            style={{ marginTop: isMobile || isTablet ? '56px' : '116px' }}
+            className="generalContainer-header_block"
+          >
             <Row className="justify-content-center">
               <Col xs={12} md={6} lg={3} className="d-flex flex-column mb-3 mb-md-0">
                 <ButtonElement
@@ -107,7 +111,13 @@ const MainInfoPage = () => {
                 <Validate />
               </Col>
               {!isMobile && !isTablet && (
-                <Col xs={12} md={12} lg={3} style={{ marginLeft: isMobile && isTablet ? '0px' : '-14rem' }}>
+                <Col
+                  xs={12}
+                  md={6}
+                  lg={3}
+                  style={{ marginLeft: isMobile && isTablet ? '0px' : '-14rem' }}
+                  className="generalContainer-header_block-icons"
+                >
                   <BlockIconsHead />
                 </Col>
               )}

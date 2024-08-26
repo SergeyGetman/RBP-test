@@ -38,6 +38,22 @@
 
 
   }
+
+  &-header_block {
+
+    &-icons {
+
+      @media (min-width: 912px) and (max-width: 1025px) {
+        display: none;
+
+
+      }
+    }
+
+
+  }
+
+
 }
 
        p {

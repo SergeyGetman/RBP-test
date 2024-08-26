@@ -35,6 +35,11 @@
     height: fit-content;
   }
 }
+@media (min-width: 912px) and (max-width: 1025px) {
+  .generalContainer-header_block-icons {
+    display: none;
+  }
+}
 
 p {
   font-size: 18px;

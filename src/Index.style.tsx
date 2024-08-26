@@ -111,9 +111,9 @@ export const FormBoxImagesLogo = styled(Box)<ITextStyledComponentFooterProps>(({
 
 export const FormBoxImagesLogoForMob = styled(Box)<ITextStyledComponentFooterProps>(
   ({ isMobile, isTablet }) => ({
-    marginTop: isMobile || isTablet ? '5px' : '58px',
+    marginTop: isMobile && isTablet ? '5px' : '15px',
     padding: '10px',
-    position: 'absolute',
+    position: !isTablet ? 'static' : 'absolute',
     top: '69rem',
     zIndex: '2',
   }),
