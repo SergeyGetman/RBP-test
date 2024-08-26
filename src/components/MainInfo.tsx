@@ -34,7 +34,7 @@ const MainInfoPage = () => {
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
             <Row className="d-flex align-items-center justify-content-evenly" style={{ marginTop: '20px' }}>
-              <Col xs={12} sm={4} md={4} lg={3} className="text-center text-sm-left ">
+              <Col xs={12} sm={4} md={6} lg={3} className="text-center text-sm-left ">
                 <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
               <Col
@@ -77,7 +77,9 @@ const MainInfoPage = () => {
                   showIcon={true}
                   customStyle={customStyleForBTNVebinar}
                 />
-                <FormTextFrontend>front-end</FormTextFrontend>
+                <FormTextFrontend isMobile={isMobile} isTablet={isTablet}>
+                  front-end
+                </FormTextFrontend>
                 <FormBox>
                   <ButtonElement
                     text="С НУЛЯ"
@@ -102,10 +104,11 @@ const MainInfoPage = () => {
               <Col xs={12} md={4} lg={4} className="d-flex justify-content-center">
                 <Validate />
               </Col>
-
-              <Col xs={12} md={12} lg={3} style={{ marginLeft: '-14rem' }}>
-                <BlockIconsHead />
-              </Col>
+              {!isMobile && !isTablet && (
+                <Col xs={12} md={12} lg={3} style={{ marginLeft: isMobile && isTablet ? '0px' : '-14rem' }}>
+                  <BlockIconsHead />
+                </Col>
+              )}
             </Row>
           </Container>
 

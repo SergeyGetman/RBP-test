@@ -28,17 +28,20 @@ export const FormStyle = styled(Box)(() => ({
   color: '#fff',
 }));
 
-export const FormTextFrontend = styled(Typography)(() => ({
-  fontFamily: 'gilroyextrabold, sans-serif',
-  fontWeight: 800,
-  width: '309px',
-  height: '64px',
-  fontSize: '53px',
-  lineHeight: '66.25px',
-  color: '#FF3459',
-  textTransform: 'uppercase',
-  whiteSpace: 'nowrap',
-}));
+export const FormTextFrontend = styled(Typography)<ITextStyledComponentFooterProps>(
+  ({ isMobile, isTablet }) => ({
+    margin: isMobile && isTablet ? '0 auto' : '0',
+    fontFamily: 'gilroyextrabold, sans-serif',
+    fontWeight: 800,
+    width: '309px',
+    height: '64px',
+    fontSize: '53px',
+    lineHeight: '66.25px',
+    color: '#FF3459',
+    textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
+  }),
+);
 
 export const TextStyledComponentFooter2 = styled(Typography)<ITextStyledComponentFooterProps>(
   ({ isMobile, isTablet }) => ({
@@ -110,8 +113,8 @@ export const FormBoxImagesLogoForMob = styled(Box)<ITextStyledComponentFooterPro
   ({ isMobile, isTablet }) => ({
     marginTop: isMobile || isTablet ? '5px' : '58px',
     padding: '10px',
-    position: 'fixed',
-    bottom: '0',
+    position: 'absolute',
+    top: '69rem',
     zIndex: '2',
   }),
 );
