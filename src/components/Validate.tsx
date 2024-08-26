@@ -13,7 +13,7 @@ import {
 } from '../Index.style';
 import { ButtonElement } from '../components/button/ButtonElement';
 import useAnotherDevises from '../hooks/useAnotherDevises';
-import { ParsedCountry, PhoneInput } from 'react-international-phone';
+import { PhoneInput } from 'react-international-phone';
 import { Box, Modal, Typography } from '@mui/material';
 import { DATA_ENV_API } from '../api';
 import Spiners from './Spiners';
@@ -22,6 +22,7 @@ import { CUSTOM_STYLE_PARAM } from '../styles/custom';
 
 const Validate = () => {
   const [stateModal, setStateModal] = useState<boolean>(false);
+  const [_, setClose] = useState(false);
 
   const [validated, setValidated] = useState(false);
   const { customStyleForBTNR } = CUSTOM_STYLE_PARAM;
@@ -34,6 +35,8 @@ const Validate = () => {
   }
 
   const phoneUtil = PhoneNumberUtil.getInstance();
+
+  const handleClose = () => setClose(!stateModal);
 
   const isPhoneValid = (phone: string) => {
     try {
@@ -68,8 +71,8 @@ const Validate = () => {
       return (
         <>
           <Modal
-            open={state}
-            onClose={() => {}}
+            open={stateModal}
+            onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
@@ -106,7 +109,7 @@ const Validate = () => {
     const { user, email, phoneNo } = form_Data;
     const text = `ЗАЯВКА ОТ ${user}: ТЕЛЕФОН: ${phoneNo} email: ${email}`;
     try {
-      await fetch(APi, {
+      const responseData = await fetch(APi, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,15 +119,18 @@ const Validate = () => {
           chat_id: TELEGRAM_CHAT_ID,
           text,
         }),
-      })
-        .then((response) => response.json())
-        .then((dat) => {
-          if (!!dat.ok) {
-            setStateModal(true);
-          }
-        });
+      });
+      console.log('responseData', responseData);
+      if (responseData.status === 400) {
+        setStateModal(true);
+        showAnswer(true);
+      } else {
+        setStateModal(true);
+      }
     } catch (error) {
       console.error('error', error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -202,10 +208,7 @@ const Validate = () => {
                     {loading && <Spiners />}
                   </Box>
                   {stateModal &&
-                    showAnswer(
-                      stateModal,
-                      stateModal ? 'ДАННЫЕ ОТПРАВЛЕНЫ УСПЕШНО' : 'ДАННЫЕ НЕ ОТПРАВЛЕНЫ ',
-                    )}
+                    showAnswer(true, stateModal ? 'ДАННЫЕ ОТПРАВЛЕНЫ УСПЕШНО' : 'ДАННЫЕ НЕ ОТПРАВЛЕНЫ')}
                   <FormBoxTextConfirm>
                     Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
                   </FormBoxTextConfirm>
