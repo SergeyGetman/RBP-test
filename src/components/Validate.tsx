@@ -22,6 +22,8 @@ import { WindowModalStyle } from './modal/ModalWindow.style';
 const Validate = () => {
   const [stateModal, setStateModal] = useState<boolean>(false);
 
+  const [validated, setValidated] = useState(false);
+
   const customStyleForBTNR = {
     width: '248px',
     height: '51px',
@@ -64,7 +66,7 @@ const Validate = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [phone, setPhone] = useState<string>('');
   const isValid = isPhoneValid(phone);
-  const [validated, set_Validated] = useState(false);
+
   const [form_Data, set_Form_Data] = useState<IFormData>({
     user: '',
     email: '',
@@ -112,6 +114,13 @@ const Validate = () => {
 
   async function sendDataOnTGChanges(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
 
     setLoading(true);
 
@@ -131,10 +140,8 @@ const Validate = () => {
       })
         .then((response) => response.json())
         .then((dat) => {
-          console.log('THIS IS DATA', dat);
-          if (dat.ok) {
+          if (!!dat.ok) {
             setStateModal(true);
-            showAnswer(stateModal);
           }
         });
     } catch (error) {
@@ -215,7 +222,8 @@ const Validate = () => {
                   <Box className="d-flex justify-content-center align-items-center mt-2">
                     {loading && <Spiners />}
                   </Box>
-                  {stateModal && showAnswer(stateModal, 'ДАННЫЕ УСПЕШНО ОТПРАВЛЕНЫ')}
+                  {stateModal &&
+                    showAnswer(stateModal, stateModal ? 'ДАННЫЕ НЕ ОТПРАВЛЕНЫ' : 'ДАННЫЕ ОТПРАВЛЕНЫ УСПЕШНО')}
                   <FormBoxTextConfirm>
                     Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
                   </FormBoxTextConfirm>

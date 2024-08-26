@@ -54,7 +54,7 @@ const MainInfoPage = () => {
       <Box style={{ minHeight: '920px' }}>
         <Container fluid className="generalContainer">
           <Container fluid className="mt-2">
-            <Row className="align-items-center " style={{ marginTop: '20px' }}>
+            <Row className="d-flex align-items-center justify-content-evenly" style={{ marginTop: '20px' }}>
               <Col xs={12} sm={4} md={4} lg={3} className="text-center text-sm-left ">
                 <img src={CSSLogo} alt="Logo" height="56px" width="182px" className="img-fluid" />
               </Col>
@@ -62,7 +62,7 @@ const MainInfoPage = () => {
                 xs={12}
                 sm={4}
                 md={4}
-                className="d-flex justify-content-center justify-content-sm-end"
+                className="d-flex justify-content-center "
                 style={{ gridGap: '10px' }}
               >
                 <ButtonElement
@@ -123,12 +123,10 @@ const MainInfoPage = () => {
               <Col xs={12} md={4} lg={4} className="d-flex justify-content-center">
                 <Validate />
               </Col>
-              {isMobile ||
-                (isTablet && (
-                  <Col xs={12} md={12} lg={3} style={{ marginLeft: '-5rem' }}>
-                    <BlockIconsHead />
-                  </Col>
-                ))}
+
+              <Col xs={12} md={12} lg={3} style={{ marginLeft: '-14rem' }}>
+                <BlockIconsHead />
+              </Col>
             </Row>
           </Container>
 
