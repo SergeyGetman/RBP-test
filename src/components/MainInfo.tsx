@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/globalstyle.css';
 import CSSLogo from '../images/logo.svg';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { ButtonElement } from '../components/button/ButtonElement';
 import iconDate from '../images/icons/calendar_icon.svg';
 import iconTime from '../images/icons/gg_time.svg';
@@ -20,11 +20,10 @@ import BlockHumanGiftMob from '../components/BlockHumanGiftMob';
 import BlockHumanGift from '../components/BlockHumanGift';
 import BlockIconsHead from '../components/BlockIconsHead';
 import { CUSTOM_STYLE_PARAM } from '../styles/custom';
+import useAnotherDevises from '../hooks/useAnotherDevises';
 
 const MainInfoPage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const { isMobile, isTablet } = useAnotherDevises();
 
   const { customStyleForBTNClockDate, customStyleForBTNVebinar, customStyleForBTNRotate } =
     CUSTOM_STYLE_PARAM;
