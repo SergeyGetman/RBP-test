@@ -3,16 +3,13 @@ import {
   FormBoxImagesHumanLogo,
   FormBoxImagesHumanSubTitle,
   FormBoxImagesHumanTitle,
-  FormBoxImagesLogo,
   FormBoxImagesLogoForMob,
 } from '../Index.style';
 import ImageComponent from '../components/ImageComponent';
 import iconHuman from '../images/man_logo.png';
 import iconGift from '../images/gift_logo.png';
-import UseAnotherDevises from '../hooks/useAnotherDevises';
 
 const BlockHumanGiftMob = () => {
-  const { isMobile, isTablet } = UseAnotherDevises();
   return (
     <>
       <FormBoxImagesLogoForMob>

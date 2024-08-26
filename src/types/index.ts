@@ -2,10 +2,6 @@ import { CustomStepperEnum } from '../enam';
 import { CSSProperties, ReactNode } from 'react';
 import { MouseEvent } from 'react';
 
-export interface IDataTable {
-  arr?: any[];
-}
-
 export interface IProduct {
   id: number;
   title: string;

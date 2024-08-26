@@ -2,13 +2,12 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import '../styles/globalstyle.css';
 import CSSLogo from '../images/logo.svg';
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { ButtonElement } from '../components/button/ButtonElement';
 import iconDate from '../images/icons/calendar_icon.svg';
 import iconTime from '../images/icons/gg_time.svg';
 import iconCircle from '../images/icons/circle.svg';
-import iconGift from '../images/gift_logo.png';
-import iconHuman from '../images/man_logo.png';
+
 import {
   FormBox,
   FormBoxText,
@@ -17,37 +16,18 @@ import {
   TextStyledComponentFooter,
 } from '../Index.style';
 import Validate from '../components/Validate';
-import ImageComponent from './ImageComponent';
 import BlockHumanGiftMob from '../components/BlockHumanGiftMob';
 import BlockHumanGift from '../components/BlockHumanGift';
 import BlockIconsHead from '../components/BlockIconsHead';
+import { CUSTOM_STYLE_PARAM } from '../styles/custom';
 
 const MainInfoPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
 
-  const customStyleForBTNRotate = {
-    rotate: '-3.51deg',
-    fontSize: isTablet || isMobile ? '16px' : '23px',
-    fontWeight: '800',
-    fontFamily: 'Gilroy',
-    lineHeight: '28.75px',
-  };
-
-  const customStyleForBTNVebinar = {
-    fontSize: '24px',
-    fontWeight: '600',
-    fontFamily: 'Gilroy',
-    lineHeight: '24px',
-    margin: isMobile || isTablet ? '0 auto' : 'auto auto',
-  };
-  const customStyleForBTNClockDate = {
-    fontSize: '14px',
-    fontWeight: '600',
-    fontFamily: 'Gilroy',
-    lineHeight: '14px',
-  };
+  const { customStyleForBTNClockDate, customStyleForBTNVebinar, customStyleForBTNRotate } =
+    CUSTOM_STYLE_PARAM;
 
   return (
     <>

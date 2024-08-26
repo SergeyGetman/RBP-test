@@ -18,33 +18,14 @@ import { Box, Modal, Typography } from '@mui/material';
 import { DATA_ENV_API } from '../api';
 import Spiners from './Spiners';
 import { WindowModalStyle } from './modal/ModalWindow.style';
+import { CUSTOM_STYLE_PARAM } from '../styles/custom';
 
 const Validate = () => {
   const [stateModal, setStateModal] = useState<boolean>(false);
 
   const [validated, setValidated] = useState(false);
-
-  const customStyleForBTNR = {
-    width: '248px',
-    height: '51px',
-    fontSize: '15px',
-    fontWeight: '700',
-    fontFamily: 'Gilroy',
-    lineHeight: '24px',
-    margin: '0 auto',
-  };
-
-  interface IPhone {
-    (phone: string, meta: { country: ParsedCountry; inputValue: string }): void;
-    setPhone: () => void;
-  }
-  interface IPhone {
-    phone: string;
-    meta?: {
-      country?: ParsedCountry;
-      inputValue?: string;
-    };
-  }
+  const { customStyleForBTNR } = CUSTOM_STYLE_PARAM;
+  const { TELEGRAM_CHAT_ID, APi } = DATA_ENV_API;
 
   interface IFormData {
     user: string;
@@ -72,8 +53,6 @@ const Validate = () => {
     email: '',
     phoneNo: '',
   });
-
-  const { TELEGRAM_CHAT_ID, APi } = DATA_ENV_API;
 
   const chngFn = (event: any) => {
     const { name, value } = event.target;
@@ -223,7 +202,10 @@ const Validate = () => {
                     {loading && <Spiners />}
                   </Box>
                   {stateModal &&
-                    showAnswer(stateModal, stateModal ? 'ДАННЫЕ НЕ ОТПРАВЛЕНЫ' : 'ДАННЫЕ ОТПРАВЛЕНЫ УСПЕШНО')}
+                    showAnswer(
+                      stateModal,
+                      stateModal ? 'ДАННЫЕ ОТПРАВЛЕНЫ УСПЕШНО' : 'ДАННЫЕ НЕ ОТПРАВЛЕНЫ ',
+                    )}
                   <FormBoxTextConfirm>
                     Нажимая на кнопку я согашаюсь <br /> <span> с политикой конфидециальности</span>
                   </FormBoxTextConfirm>
