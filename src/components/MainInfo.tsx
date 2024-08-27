@@ -115,7 +115,7 @@ const MainInfoPage = () => {
                   xs={12}
                   md={6}
                   lg={3}
-                  style={{ marginLeft: isMobile && isTablet ? '0px' : '-14rem' }}
+                  style={{ marginLeft: isMobile && isTablet ? '0px' : '-5rem' }}
                   className="generalContainer-header_block-icons"
                 >
                   <BlockIconsHead />
