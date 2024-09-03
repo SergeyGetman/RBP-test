@@ -19,11 +19,15 @@ import { DATA_ENV_API } from '../api';
 import Spiners from './Spiners';
 import { WindowModalStyle } from './modal/ModalWindow.style';
 import { CUSTOM_STYLE_PARAM } from '../styles/custom';
+import { useNavigate } from 'react-router-dom';
 
 const Validate = () => {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [_, setClose] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleNavigate = () => navigate('/page-check-number');
   const [validated, setValidated] = useState(false);
   const { customStyleForBTNR } = CUSTOM_STYLE_PARAM;
   const { TELEGRAM_CHAT_ID, APi } = DATA_ENV_API;
@@ -217,6 +221,7 @@ const Validate = () => {
             </Col>
           </Row>
         </Container>
+        <ButtonElement text="NEXT PAGE" variant="success" handleClick={() => handleNavigate()} />
       </BoxForm>
     </>
   );

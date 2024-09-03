@@ -20,7 +20,8 @@ export enum CustomButtonTextEnum {
 export enum CustomEnumPath {
   home = '/',
   modalWindow = '/add',
-  pageRgb = '/page-rgb'
+  pageRgb = '/page-rgb',
+  pageCheck = '/page-check-number',
 }
 
 export enum NotificationValidationEnum {

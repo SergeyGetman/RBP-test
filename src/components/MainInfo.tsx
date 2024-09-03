@@ -21,9 +21,14 @@ import BlockHumanGift from '../components/BlockHumanGift';
 import BlockIconsHead from '../components/BlockIconsHead';
 import { CUSTOM_STYLE_PARAM } from '../styles/custom';
 import useAnotherDevises from '../hooks/useAnotherDevises';
+import { useNavigate } from 'react-router-dom';
 
 const MainInfoPage = () => {
   const { isMobile, isTablet } = useAnotherDevises();
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => navigate('/page-check-number');
 
   const { customStyleForBTNClockDate, customStyleForBTNVebinar, customStyleForBTNRotate } =
     CUSTOM_STYLE_PARAM;
