@@ -316,3 +316,11 @@ export const FormBoxMap = styled(Box)<ITextStyledComponentFooterProps>(({ isMobi
     wordWrap: 'break-word',
   },
 }));
+
+export const HeaderListStyle = styled(Box)(() => ({
+  height: '474px',
+  color: 'white',
+  borderRadius: '10px',
+
+  backgroundColor: '#303A53',
+}));
